@@ -15,8 +15,8 @@
     function hi() {
         const imgLink = chrome.runtime.getURL('worthit-popup.png');
 
-        const itemHTML = `<div class="placeholder"> <img class="sidePopImage" src="${imgLink}" alt="plus sign"></div>
-<div class="mainFrame"></div>`;
+        const itemHTML = ` <img class="sidePopImage" src="${imgLink}" alt="plus sign">
+<div class="mainFrame"><div class="nav-bar"></div></div>`;
 
         // Create a temporary container element
         const tempContainer = document.createElement('div');

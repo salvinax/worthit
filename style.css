@@ -11,16 +11,10 @@
     /* Add transition for smooth sliding */
 }
 
-
-.placeholder {
-    display: flex;
-    height: 80px;
-    align-items: center;
-}
-
 .sidePopImage {
     height: 50px;
     width: 50px;
+    margin: 0;
 }
 
 
@@ -28,7 +22,7 @@
     height: 450px;
     width: 350px;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
 }
@@ -39,21 +33,16 @@
 }
 
 
-.nav-bar {
-    background-color: green;
-    display: flex;
-    flex-direction: column;
-}
 
 .nav-bar {
     background-color: green;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background-color: #224A2C;
     /* Background color of the navigation bar */
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    height: 50px;
     /* Adjust the padding as needed */
 }
 
