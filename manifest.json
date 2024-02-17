@@ -1,0 +1,11 @@
+{
+  "name": "worthit",
+  "version": "1.0.0",
+  "description": "no overconsumption pls",
+  "manifest_version": 3,
+  "author": "PixelPaw",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "worthit"
+  }
+}
