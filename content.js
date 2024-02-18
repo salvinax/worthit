@@ -19,24 +19,12 @@
         const settings = chrome.runtime.getURL('settings.svg');
         const brand = amazon_data.company;
         const title = amazon_data.title;
-        const price = amazon_data.price;
+        const price = "$524.98";
         const imgLink = chrome.runtime.getURL("worthit-popup.svg");
         const imgLink2 = chrome.runtime.getURL("minus.svg");
         const imgLink3 = chrome.runtime.getURL("plus.svg");
         const imgLink4 = chrome.runtime.getURL("circle.svg");
         const imgLink5 = chrome.runtime.getURL("circle1.svg")
-
-        const arrayN = ["Double-wall vacuum insulation for long-lasting temperature regulation.",
-            "Wide range of size options (14oz, 20oz, 30oz, 40oz, and 64oz).",
-            "Sustainable construction using 90% recycled BPA-free stainless steel.",
-            "Dishwasher safe for convenient cleaning without retaining smells.",
-            "Backed by a lifetime warranty, ensuring long-term durability and support."]
-
-        const arrayN2 = ["Complaints about inconsistent temperature retention.",
-            "Reported issues with leaking lids affecting usability and product quality.",
-            "Quality control issues like scuff marks and inadequate packaging during shipping.",
-            "Potential spillage due to the straw design, causing inconvenience for users.",
-            "Some consumers find it overpriced relative to its quality."]
 
         const home =
             `<div class="placeholder"><img class="sidePopImage" src="${imgLink}" alt="plus sign"></div>
@@ -181,8 +169,6 @@ function addTabContent(tabName) {
 }
 
 
-
-
 const tabs = document.querySelectorAll('.tab-el');
 // Add click event listener to each tab
 tabs.forEach(tab => {
@@ -198,8 +184,6 @@ tabs.forEach(tab => {
         addTabContent(tabName);
     });
 });
-
-
 
 
 async function getAmazon() {

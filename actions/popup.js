@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', function () {
         var name = document.getElementById('promptInput').value;
         var response = await getAmazon();
         response = await getMotherly(response.openai_info);
-        // if (name === 'motherly') {
-        //     response = await getMotherly(response.openai_info);
-        // } else if (name === 'genz') {
-        //     response = await getGenz(response.openai_info);
-        // } else {
-        //     response = await getNeutral(response.openai_info);
-        // }
+        if (name === 'motherly') {
+            response = await getMotherly(response.openai_info);
+        } else if (name === 'genz') {
+            response = await getGenz(response.openai_info);
+        } else {
+            response = await getNeutral(response.openai_info);
+        }
         console.log(response)
     });
 });
