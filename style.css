@@ -85,19 +85,20 @@
 }
 
 .tab-el {
-    width: 33%;
     height: 30px;
     color: black;
     display: flex;
     justify-content: center;
+    align-items: center;
     bottom: 0;
 }
 
 .tab-bar {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     width: 100%;
-    height: 20px;
+    justify-content: space-evenly;
+    border-bottom: 1px solid;
 }
 
 .p-tab {
@@ -107,7 +108,8 @@
 }
 
 .active {
-    background-color: #ccc;
+    border-bottom: 2px solid;
+    border-color: green;
     /* Highlighted tab style */
 }
 
