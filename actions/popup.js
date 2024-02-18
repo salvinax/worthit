@@ -19,6 +19,7 @@ async function getAmazon() {
     // get product information 
     try {
         const response = await fetch('http://127.0.0.1:5000/amazon-info');
+        localStorage.setItem('amazon_data', JSON.stringify(response));
         return response.json();
     } catch (error) {
         console.error('Error:', error);
@@ -37,7 +38,7 @@ async function getMotherly(openai_info) {
         .then(response => response.json())
         .then(data => {
             document.getElementById('response').innerText = 'Response: ' + JSON.stringify(data);
-            console.log(data)
+            localStorage.setItem('query_results', JSON.stringify(data));
             return data
         })
         .catch((error) => {
@@ -56,7 +57,7 @@ async function getGenz(openai_info) {
         .then(response => response.json())
         .then(data => {
             document.getElementById('response').innerText = 'Response: ' + JSON.stringify(data);
-            console.log(data)
+            localStorage.setItem('query_results', JSON.stringify(data));
             return data
         })
         .catch((error) => {
@@ -75,7 +76,7 @@ async function getNeutral(openai_info) {
         .then(response => response.json())
         .then(data => {
             document.getElementById('response').innerText = 'Response: ' + JSON.stringify(data);
-            console.log(data)
+            localStorage.setItem('query_results', JSON.stringify(data));
             return data
         })
         .catch((error) => {
