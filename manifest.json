@@ -7,5 +7,19 @@
   "action": {
     "default_popup": "index.html",
     "default_title": "worthit"
-  }
+  },
+  "permissions": ["activeTab", "scripting"],
+  "web_accessible_resources": [
+    {
+      "resources": ["*.png", "*.jpg", "*.svg"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.amazon.ca/*"],
+      "js": ["content.js"],
+      "css": ["style.css"]
+    }
+  ]
 }

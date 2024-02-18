@@ -1,48 +1,84 @@
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('promptForm').addEventListener('submit', function (event) {
+    document.getElementById('promptForm').addEventListener('submit', async function (event) {
         event.preventDefault(); // Prevent the default form submission
         var name = document.getElementById('promptInput').value;
-        sendRequest(name);
-        getAmazon()
+        var response = await getAmazon();
+        response = await getMotherly(response.openai_info);
+        // if (name === 'motherly') {
+        //     response = await getMotherly(response.openai_info);
+        // } else if (name === 'genz') {
+        //     response = await getGenz(response.openai_info);
+        // } else {
+        //     response = await getNeutral(response.openai_info);
+        // }
+        console.log(response)
     });
 });
 
 
-
-
-
-function getAmazon() {
+async function getAmazon() {
     // get product information 
+    try {
+        const response = await fetch('http://127.0.0.1:5000/amazon-info');
+        console.log(response)
+        localStorage.setItem('amazon_data', JSON.stringify(response));
+        return response.json();
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
 
-    fetch('http://127.0.0.1:5000/amazon', {
+async function getMotherly(openai_info) {
+    await fetch('http://127.0.0.1:5000/motherly-query', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ 'openai_info': openai_info })
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
-            document.getElementById('information').innerText = 'Response: ' + JSON.stringify(data.reviews);
+            document.getElementById('response').innerText = 'Response: ' + JSON.stringify(data);
+            localStorage.setItem('query_results3', data);
+            return data
         })
         .catch((error) => {
             console.error('Error:', error);
         });
 }
 
-function sendRequest(name) {
-    fetch('http://127.0.0.1:5000/open-ai', {
+async function getGenz(openai_info) {
+    await fetch('http://127.0.0.1:5000/genz-query', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-
-        body: JSON.stringify({ name: name })
+        body: JSON.stringify({ 'openai_info': openai_info })
     })
-        .then(response => response.text())
+        .then(response => response.json())
         .then(data => {
-            document.getElementById('response').innerText = 'Response: ' + data;
-            console.log(data)
+            document.getElementById('response').innerText = 'Response: ' + JSON.stringify(data);
+            localStorage.setItem('query_results2', JSON.stringify(data));
+            return data
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+}
+
+async function getNeutral(openai_info) {
+    await fetch('http://127.0.0.1:5000/neutral-query', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 'openai_info': openai_info })
+    })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('response').innerText = 'Response: ' + JSON.stringify(data);
+            localStorage.setItem('query_results1', data);
+            return data
         })
         .catch((error) => {
             console.error('Error:', error);

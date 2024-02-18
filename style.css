@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+cssbody {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* p {
+    font-family: 'Roboto', sans-serif;
+} */
+
+.sidePop {
+    position: fixed;
+    z-index: 2147483647;
+    display: flex;
+    flex-direction: row;
+    row-gap: 0;
+    right: -340px;
+    top: 75px;
+    transition: transform 0.3s ease;
+    margin: 0;
+    /* Add transition for smooth sliding */
+}
+
+.placeholder {
+    height: 100px;
+    width: 40px;
+    position: relative;
+}
+
+.sidePopImage {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    width: 40px;
+}
+
+
+.mainFrame {
+    height: 450px;
+    width: 340px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    overflow-x: hidden;
+    border: 1px black;
+}
+
+
+.slide-down {
+    transform: translateX(-89%);
+}
+
+.slide-up {
+    transform: translateX(0%);
+}
+
+.divN {
+    white-space: pre-line;
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    background-color: #FFFBE4;
+    /* Background color of the navigation bar */
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    /* Adjust the padding as needed */
+}
+
+.left-svg {
+    float: left;
+    /* Keep the left SVG on the left */
+    padding: 10px;
+}
+
+.right-svgs {
+    display: flex;
+    /* Use flexbox for layout */
+    align-items: center;
+    /* Center items vertically */
+}
+
+.right-svgs img {
+    margin-left: 10px;
+    /* Adjust the margin between SVGs */
+}
+
+.product-detail {
+    display: flex;
+    flex-direction: row;
+    row-gap: 10px;
+    height: 150px;
+    width: 100%;
+    top: 50px;
+}
+
+#item-brand {
+    font-size: 16px;
+}
+
+#item-title {
+    font-size: 12px;
+    color: #7B7B7B;
+}
+
+#item-price {
+    font-size: 14px;
+}
+
+.product-info {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    padding-top: 20px;
+    /* Add padding to the top */
+}
+
+.product-image {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.tab-bar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    border-bottom: 1px solid;
+}
+
+.p-tab {
+    color: #224A2C;
+    font-size: 16px;
+    font-style: bold;
+
+}
+
+.active {
+    border-bottom: 2px solid;
+    border-color: green;
+    /* Highlighted tab style */
+}
+
+.text-format {
+    color: black;
+    font-size: 15px;
+}
+
+.main-img {
+    object-fit: cover;
+    max-height: 90%;
+    max-width: 60%;
+    border: 1px;
+    border-color: black;
+}
+
+.tabContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pros-ensemble {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hey {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pros-section {
+    padding: 10px;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+}
+
+.circle {
+    margin-left: 10px;
+}
+
+.arg-boxes {
+    border-radius: 5px;
+    background-color: #DBF2D4;
+    width: 95%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-wrap: wrap;
+    margin-top: 4px;
+}
+
+.arg-boxes-red {
+    border-radius: 5px;
+    background-color: #f0dddc;
+    width: 95%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-wrap: wrap;
+    margin-top: 4px;
+}
+
+.esg_width {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    flex-direction: column;
+}
+
+.esg {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.text_overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 36px;
+    font-family: "Oleo Script Swash Caps", cursive;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#write {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+
+}
