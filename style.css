@@ -52,6 +52,10 @@ cssbody {
     transform: translateX(-89%);
 }
 
+.slide-up {
+    transform: translateX(0%);
+}
+
 .divN {
     white-space: pre-line;
 }

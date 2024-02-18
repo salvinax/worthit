@@ -39,7 +39,7 @@
                 </div>
                 <div class="right-svgs">
                     <img src="${settings}" alt="Right SVG 1">
-                    <img src="${exit}" alt="Right SVG 2">
+                    <img class="exit" src="${exit}" alt="Right SVG 2">
                 </div>
 </div>
 <div class="product-detail">
@@ -88,6 +88,11 @@
 document.getElementsByClassName("sidePopImage")[0].addEventListener("click", function () {
     var container = document.getElementsByClassName("sidePop")[0];
     container.classList.toggle("slide-down");
+});
+
+document.getElementsByClassName("exit")[0].addEventListener("click", function () {
+    var container = document.getElementsByClassName("sidePop")[0];
+    container.classList.toggle("slide-up");
 });
 
 function addTabContent(tabName) {
