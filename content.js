@@ -119,7 +119,10 @@ function addTabContent(tabName) {
         newContent.innerHTML = home;
     } else if (tabName === " Worth It?") {
         console.log(tabName);
-        newContent.innerHTML = `<p class="bold">Worth-It Meter</p><div class="esg">
+        newContent.innerHTML = `
+        <div class="esg_width">
+        <p class="bold">Worth-It Meter</p>
+        <div class="esg">
             <img src="${worthitCircle}" alt="WorthIt Circle">
             <div class="text_overlay">3/10</div>
         </div>
@@ -127,10 +130,12 @@ function addTabContent(tabName) {
         <p>No. This product might not worth it due to its high price tag relative to its perceived performance, alongside the subpar sustainability impact of its parent company. I recommend exploring alternative options that offer more value for money but also align with better eco practices.</p>
         <p class="bold"> What is the Worth-It Meter?</p>
         <p>The Worth-It Meter is a conclusive rating that evaluates a product's overall standing by combining the product’s star ratings and its ESG score.</p>
-        <p>A higher score reflects positive star ratings and a commendable ESG score. The product not only performs well but also exhibits strong environmental, social, and governance practices, contributing to a more conscientious and worthwhile purchase.</p>`;
+        <p>A higher score reflects positive star ratings and a commendable ESG score. The product not only performs well but also exhibits strong environmental, social, and governance practices, contributing to a more conscientious and worthwhile purchase.</p>
+        </div>`;
     } else {
         newContent.innerHTML = `
             <div class="esg_width">
+            <p class="bold">ESG Risk Meter</p><div class="esg">    
             <div class="esg">
                 <img src="${esg_circle}" alt="ESG Circle">
                 <div class="text_overlay">25</div>

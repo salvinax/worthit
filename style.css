@@ -206,13 +206,13 @@ cssbody {
     text-wrap: wrap;
 }
 
-/* .esg_width {
+.esg_width {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 95%;
     flex-direction: column;
-} */
+}
 
 .esg {
     display: flex;
