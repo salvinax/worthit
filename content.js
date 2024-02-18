@@ -15,15 +15,16 @@
     function hi() {
         const imgLink = chrome.runtime.getURL('worthit-popup.png');
         const imgLink1 = chrome.runtime.getURL('stanley.jpg');
-        const hi = "Stanley Cup"
-        const price = "$23.99"
+        const brand = "Stanley"
+        const title = "Stanley Quencher H2.O FlowState™ Tumbler 30oz Rose Quartz"
+        const price = "CAD $39.29"
 
         const home = ` <img class="sidePopImage" src="${imgLink}" alt="plus sign">
 <div class="mainFrame"><div class="nav-bar"></div>
 
 <div class="product-detail">
  <div class="product-image"><img class="main-img" src="${imgLink1}" alt="plus sign"></div>
- <div class="product-info"> <p class="text-format">${hi}</p><p class="text-format">${price}</p></div>
+ <div class="product-info"> <p id="item-brand" class="text-format">${brand}</p><p id="item-title" class="text-format">${title}</p><p id="item-text" class="text-format">${price}</p></div>
  </div>
  <div class="tab-bar">
  <div class="tab-el active"> <p class="p-tab">Overview</p></div>

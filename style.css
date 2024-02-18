@@ -1,3 +1,7 @@
+cssbody {
+    font-family: 'Roboto', sans-serif;
+}
+
 .sidePop {
     position: fixed;
     z-index: 2147483647;
@@ -35,10 +39,9 @@
 
 
 .nav-bar {
-    background-color: green;
     display: flex;
     flex-direction: row;
-    background-color: #224A2C;
+    background-color: #FFFBE4;
     /* Background color of the navigation bar */
     justify-content: space-between;
     align-items: center;
@@ -62,17 +65,32 @@
     row-gap: 10px;
     height: 150px;
     width: 100%;
-    top: 50px;
+    top: 50px; 
 }
 
+#item-brand {
+    font-size: 16px;
+}
+
+#item-title {
+    font-size: 12px;
+    color: #7B7B7B;
+}
+
+#item-price {
+    font-size: 14px;
+}
 
 .product-info {
     width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: flex-start;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    padding-top: 20px; /* Add padding to the top */
 }
 
 .product-image {
@@ -84,15 +102,6 @@
     border-radius: 20px;
 }
 
-.tab-el {
-    height: 30px;
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    bottom: 0;
-}
-
 .tab-bar {
     display: flex;
     flex-direction: row;
@@ -102,8 +111,9 @@
 }
 
 .p-tab {
-    color: black;
-    font-size: 15px;
+    color: #224A2C;
+    font-size: 16px;
+    font-style: bold;
 
 }
 
