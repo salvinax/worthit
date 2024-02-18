@@ -20,18 +20,19 @@
         const price = "CAD $39.29"
 
         const home = ` <img class="sidePopImage" src="${imgLink}" alt="plus sign">
-<div class="mainFrame"><div class="nav-bar"></div>
+        <div class="mainFrame">
+            <div class="nav-bar"></div>
 
-<div class="product-detail">
- <div class="product-image"><img class="main-img" src="${imgLink1}" alt="plus sign"></div>
- <div class="product-info"> <p id="item-brand" class="text-format">${brand}</p><p id="item-title" class="text-format">${title}</p><p id="item-text" class="text-format">${price}</p></div>
- </div>
- <div class="tab-bar">
- <div class="tab-el active"> <p class="p-tab">Overview</p></div>
- <div class="tab-el"> <p class="p-tab">ESG Score</p> </div>
- <div class="tab-el"> <p class="p-tab">Worth It?</p></div>
- </div>
- </div></div></div>`;
+            <div class="product-detail">
+                <div class="product-image"><img class="main-img" src="${imgLink1}" alt="plus sign"></div>
+                <div class="product-info"> <p id="item-brand" class="text-format">${brand}</p><p id="item-title" class="text-format">${title}</p><p id="item-text" class="text-format">${price}</p></div>
+            </div>
+            <div class="tab-bar">
+                <div class="tab-el active"> <p class="p-tab">Overview</p></div>
+                <div class="tab-el"> <p class="p-tab">ESG Score</p> </div>
+                <div class="tab-el"> <p class="p-tab">Worth It?</p></div>
+            </div>
+        </div></div></div>`;
 
         const overview = ``
         const esg_screen = ``
