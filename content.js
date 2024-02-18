@@ -47,7 +47,7 @@
                 </div>
                 <div class="right-svgs">
                     <img src="${settings}" alt="Right SVG 1">
-                    <img src="${exit}" alt="Right SVG 2">
+                    <img class="exit" src="${exit}" alt="Right SVG 2">
                 </div>
 </div>
 <div class="product-detail">
@@ -108,6 +108,11 @@ document.getElementsByClassName("sidePopImage")[0].addEventListener("click", fun
     container.classList.toggle("slide-down");
 });
 
+document.getElementsByClassName("exit")[0].addEventListener("click", function () {
+    var container = document.getElementsByClassName("sidePop")[0];
+    container.classList.toggle("slide-up");
+});
+
 function addTabContent(tabName) {
     // Remove any previously added tab content
     const esg_circle = chrome.runtime.getURL('esg_circle.svg');
@@ -136,17 +141,22 @@ function addTabContent(tabName) {
         newContent.innerHTML = home;
     } else if (tabName === " Worth It?") {
         console.log(tabName);
-        newContent.innerHTML = `<p class="bold">Worth-It Meter</p><div class="esg">
+        newContent.innerHTML = `
+        <div class="esg_width">
+        <p class="bold">Worth-It Meter</p>
+        <div class="esg">
             <img src="${worthitCircle}" alt="WorthIt Circle">
             <div class="text_overlay">3/10</div>
         </div>
         <p class="bold">So, is it worth it?</p>
         <p class="bold"> What is the Worth-It Meter?</p>
         <p>The Worth-It Meter is a conclusive rating that evaluates a product's overall standing by combining the product’s star ratings and its ESG score.</p>
-        <p>A higher score reflects positive star ratings and a commendable ESG score. The product not only performs well but also exhibits strong environmental, social, and governance practices, contributing to a more conscientious and worthwhile purchase.</p>`;
+        <p>A higher score reflects positive star ratings and a commendable ESG score. The product not only performs well but also exhibits strong environmental, social, and governance practices, contributing to a more conscientious and worthwhile purchase.</p>
+        </div>`;
     } else {
         newContent.innerHTML = `
             <div class="esg_width">
+            <p class="bold">ESG Risk Meter</p><div class="esg">    
             <div class="esg">
                 <img src="${esg_circle}" alt="ESG Circle">
                 <div class="text_overlay">25</div>
