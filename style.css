@@ -22,9 +22,10 @@
     height: 450px;
     width: 350px;
     background-color: white;
-    border-radius: 20px;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 
@@ -44,15 +45,6 @@
     align-items: center;
     height: 50px;
     /* Adjust the padding as needed */
-}
-
-.worthit-brand img,
-.setting-icon img {
-    width: 24px;
-    /* Adjust the size of the icons */
-    height: auto;
-    margin: 0 5px;
-    /* Add margin between icons */
 }
 
 
@@ -124,4 +116,17 @@
     max-width: 60%;
     border: 1px;
     border-color: black;
+}
+
+
+.pros-section {
+    width: 100%;
+    background-color: red;
+    height: 20px;
+}
+
+
+.tabContent {
+    width: 100%;
+    height: 40px;
 }
