@@ -11,7 +11,7 @@
   "permissions": ["activeTab", "scripting"],
   "web_accessible_resources": [
     {
-      "resources": ["*.png", "*.jpg"],
+      "resources": ["*.png", "*.jpg", "*.svg"],
       "matches": ["<all_urls>"]
     }
   ],
