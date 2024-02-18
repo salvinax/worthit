@@ -1,9 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('promptForm').addEventListener('submit', function (event) {
+    document.getElementById('promptForm').addEventListener('submit', async function (event) {
         event.preventDefault(); // Prevent the default form submission
         var name = document.getElementById('promptInput').value;
-        sendRequest(name);
-        getAmazon()
+        var response = await getAmazon();
+        if (name === 'motherly') {
+            response = await getOpenAI(response.openai_info);
+        } else if (name === 'teen') {
+            response = await getOpenAI(response.openai_info);
+        } else {
+            response = await getOpenAI(response.openai_info);
+        }
+        console.log(response)
     });
 });
 
@@ -11,38 +18,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-function getAmazon() {
+async function getAmazon() {
     // get product information 
+    try {
+        const response = await fetch('http://127.0.0.1:5000/amazon-info');
+        return response.json();
+    } catch (error) {
+        console.error('Error:', error);
+    }
 
-    fetch('http://127.0.0.1:5000/amazon', {
+}
+
+async function getOpenAI(openai_info) {
+    await fetch('http://127.0.0.1:5000/neutral-query', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
+        body: JSON.stringify({'openai_info': openai_info})
     })
         .then(response => response.json())
         .then(data => {
+            document.getElementById('response').innerText = 'Response: ' + JSON.stringify(data);
             console.log(data)
-            document.getElementById('information').innerText = 'Response: ' + JSON.stringify(data.reviews);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-}
-
-function sendRequest(name) {
-    fetch('http://127.0.0.1:5000/open-ai', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-
-        body: JSON.stringify({ name: name })
-    })
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('response').innerText = 'Response: ' + data;
-            console.log(data)
+            return data
         })
         .catch((error) => {
             console.error('Error:', error);
