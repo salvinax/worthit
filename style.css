@@ -1,26 +1,38 @@
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+
 .sidePop {
     position: fixed;
     z-index: 2147483647;
     display: flex;
     flex-direction: row;
     row-gap: 0;
-    right: -355px;
-    top: 100px;
+    right: -340px;
+    top: 75px;
     transition: transform 0.3s ease;
     margin: 0;
     /* Add transition for smooth sliding */
 }
 
+.placeholder {
+    height: 100px;
+    width: 40px;
+    position: relative;
+}
+
 .sidePopImage {
-    height: 50px;
-    width: 50px;
-    margin: 0;
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    width: 40px;
 }
 
 
 .mainFrame {
     height: 450px;
-    width: 350px;
+    width: 340px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -33,6 +45,9 @@
     transform: translateX(-89%);
 }
 
+.divN {
+    white-space: pre-line;
+}
 
 
 .nav-bar {
@@ -118,15 +133,43 @@
     border-color: black;
 }
 
-
-.pros-section {
-    width: 100%;
-    background-color: red;
-    height: 20px;
-}
-
-
 .tabContent {
     width: 100%;
-    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pros-ensemble {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hey {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pros-section {
+    padding: 10px;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+}
+
+.arg-boxes {
+    border-radius: 5px;
+    background-color: #DBF2D4;
+    width: 95%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    text-wrap: wrap;
 }

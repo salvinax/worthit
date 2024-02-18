@@ -7,10 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
-
-
-
 function getAmazon() {
     // get product information 
 
