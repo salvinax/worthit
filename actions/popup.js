@@ -15,9 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
-
 async function getAmazon() {
     // get product information 
     try {
@@ -30,12 +27,12 @@ async function getAmazon() {
 }
 
 async function getOpenAI(openai_info) {
-    await fetch('http://127.0.0.1:5000/neutral-query', {
+    await fetch('http://127.0.0.1:5000/motherly-query', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({'openai_info': openai_info})
+        body: JSON.stringify({ 'openai_info': openai_info })
     })
         .then(response => response.json())
         .then(data => {

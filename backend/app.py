@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from openai import OpenAI
 from flask_cors import CORS, cross_origin
-import os 
 import requests
 import json
 import yesg
@@ -17,17 +16,17 @@ CORS(app)
 
 client1 = OpenAI( 
     #api_key = os.environ['OPENAI_API_KEY']
-    api_key = "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"
+    api_key = "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"
 )
 client2 = OpenAI( 
     #api_key = os.environ['OPENAI_API_KEY']
-    api_key = "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"
+    api_key = "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"
 )
-rainforest_api_key = 'A8635907F546477E9E12B56C449204D6'
+rainforest_api_key = '96255297DE974A5EBD6BE6B2459198BD'
 
 motherly_tone="You are a mother going shopping with her child. Speak in a parental tone to a child who wants to buy a product. Make sure your response is short but covers briefly all essential topics. You know that your child does not need anything."
 genz_tone="You are a blunt, brutally honest, and a bit rude Gen Z teenager shopping with their friend. Speak to your friend who wants to buy a product, that you know they do not need. Use Gen Z TikTok terminology, acronyms, and references. Use some phrases like: 'Be so for real with me right now' and 'Are you serious'. Make sure your response is short but covers briefly all essential topics."
-neutral_tone="You are ChatGPT advising someone on whether or not they should buy a product. You know they do not need the product."
+neutral_tone="You are ChatGPT advising someone on whether or not they should buy a product. You know they do not need the product. Make sure your response is short but covers briefly all essential topics."
 
 pros_query=" Create a list of 5 pros of the product."
 cons_query=" Create a list of 5 cons of the product."
@@ -42,6 +41,7 @@ def amazon_info():
     # create storage dictionary
     response = {}
     product_info = getAmazonInfo('B0CP9YB3Q4')
+    
     response['title'] = product_info.get('product').get('title')
     response['price'] = product_info.get('product').get('buybox_winner').get('price').get('raw')
     response['company'] = product_info.get('product').get('brand')
@@ -69,6 +69,8 @@ def amazon_info():
 
     createOpenAIInfo(response)
 
+    with open("sampleAmazon.json", "w") as outfile: 
+        json.dump(response, outfile)
     # return dictionary
     return response
 
@@ -86,14 +88,53 @@ def neutral_query():
     query_results['worthit_query'] = callOpenAI(client2, neutral_tone, openai_info + worthit_query)
     time.sleep(5)
     query_results['openai_score_query'] = callOpenAI(client1, neutral_tone, openai_info + openai_score_query)
-    return query_results.json()
+
+    with open("sample1.json", "w") as outfile: 
+        json.dump(query_results, outfile)
+    return query_results
+
+@app.route('/motherly-query', methods=['GET', 'POST'])
+def motherly_query():
+    openai_info = request.json.get('openai_info')
+    
+    query_results = {}
+    # instantiate client.chat.completions
+    query_results['pros_query'] = callOpenAI(client1, neutral_tone, openai_info + pros_query)
+    query_results['cons_query'] = callOpenAI(client2, neutral_tone, openai_info + cons_query)
+    time.sleep(5)
+    query_results['summary_query'] = callOpenAI(client1, motherly_tone, openai_info + summary_query)
+    query_results['worthit_query'] = callOpenAI(client2, motherly_tone, openai_info + worthit_query)
+    time.sleep(5)
+    query_results['openai_score_query'] = callOpenAI(client1, motherly_tone, openai_info + openai_score_query)
+    
+    with open("sample2.json", "w") as outfile: 
+        json.dump(query_results, outfile)
+    return query_results
+
+@app.route('/genz-query', methods=['GET', 'POST'])
+def genz_query():
+    openai_info = request.json.get('openai_info')
+    
+    query_results = {}
+    # instantiate client.chat.completions
+    query_results['pros_query'] = callOpenAI(client1, neutral_tone, openai_info + pros_query)
+    query_results['cons_query'] = callOpenAI(client2, neutral_tone, openai_info + cons_query)
+    time.sleep(5)
+    query_results['summary_query'] = callOpenAI(client1, genz_tone, openai_info + summary_query)
+    query_results['worthit_query'] = callOpenAI(client2, genz_tone, openai_info + worthit_query)
+    time.sleep(5)
+    query_results['openai_score_query'] = callOpenAI(client1, genz_tone, openai_info + openai_score_query)
+    with open("sample3.json", "w") as outfile: 
+        json.dump(query_results, outfile)
+    return query_results
+
 
 def getAmazonInfo(asin):
     params = {
         'api_key': rainforest_api_key,
         'type': 'product',
         'amazon_domain': 'amazon.com',
-        'asin': asin,
+        'asin': "B0B7F65Y51",
         'currency': 'cad'
     }
 
