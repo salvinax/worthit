@@ -3,13 +3,14 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault(); // Prevent the default form submission
         var name = document.getElementById('promptInput').value;
         var response = await getAmazon();
-        if (name === 'motherly') {
-            response = await getMotherly(response.openai_info);
-        } else if (name === 'genz') {
-            response = await getGenz(response.openai_info);
-        } else {
-            response = await getNeutral(response.openai_info);
-        }
+        response = await getMotherly(response.openai_info);
+        // if (name === 'motherly') {
+        //     response = await getMotherly(response.openai_info);
+        // } else if (name === 'genz') {
+        //     response = await getGenz(response.openai_info);
+        // } else {
+        //     response = await getNeutral(response.openai_info);
+        // }
         console.log(response)
     });
 });
@@ -19,12 +20,12 @@ async function getAmazon() {
     // get product information 
     try {
         const response = await fetch('http://127.0.0.1:5000/amazon-info');
-        localStorage.setItem('amazon_data', response);
+        console.log(response)
+        localStorage.setItem('amazon_data', JSON.stringify(response));
         return response.json();
     } catch (error) {
         console.error('Error:', error);
     }
-
 }
 
 async function getMotherly(openai_info) {

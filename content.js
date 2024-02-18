@@ -12,23 +12,31 @@
 
 (function () {
     function hi() {
-        const imgLink1 = chrome.runtime.getURL('stanley.jpg');
+        const amazon_data = JSON.parse(localStorage.getItem('amazon'));
+        const imgLink1 = amazon_data.image;
         const logo = chrome.runtime.getURL('logo.svg');
         const exit = chrome.runtime.getURL('exit.svg');
         const settings = chrome.runtime.getURL('settings.svg');
-        const brand = "Stanley"
-        const title = "Stanley Quencher H2.O FlowState™ Tumbler 30oz Rose Quartz"
-        const price = "CAD $39.29"
+        const brand = amazon_data.company;
+        const title = amazon_data.title;
+        const price = amazon_data.price;
         const imgLink = chrome.runtime.getURL("worthit-popup.svg");
         const imgLink2 = chrome.runtime.getURL("minus.svg");
         const imgLink3 = chrome.runtime.getURL("plus.svg");
         const imgLink4 = chrome.runtime.getURL("circle.svg");
+        const imgLink5 = chrome.runtime.getURL("circle1.svg")
 
         const arrayN = ["Double-wall vacuum insulation for long-lasting temperature regulation.",
             "Wide range of size options (14oz, 20oz, 30oz, 40oz, and 64oz).",
             "Sustainable construction using 90% recycled BPA-free stainless steel.",
-            "Dishwasher safe for convenient cleaning without retaining stains or smells.",
+            "Dishwasher safe for convenient cleaning without retaining smells.",
             "Backed by a lifetime warranty, ensuring long-term durability and support."]
+
+        const arrayN2 = ["Complaints about inconsistent temperature retention.",
+            "Reported issues with leaking lids affecting usability and product quality.",
+            "Quality control issues like scuff marks and inadequate packaging during shipping.",
+            "Potential spillage due to the straw design, causing inconvenience for users.",
+            "Some consumers find it overpriced relative to its quality."]
 
         const home =
             `<div class="placeholder"><img class="sidePopImage" src="${imgLink}" alt="plus sign"></div>
@@ -72,12 +80,22 @@
         arrayN.forEach(function (el) {
             var item = `
             <div class="arg-boxes">
-                <img src="${imgLink4}">
+                <img class="circle" src="${imgLink4}">
                     <p id="write">${el}</p>
-                    <div class="divN"></div>
                 </div>`;
             var doc = document.getElementById("one");
             doc.innerHTML += item;
+            // Create a temporary container element
+        });
+
+        arrayN2.forEach(function (el) {
+            var item = `
+            <div class="arg-boxes-red">
+                <img class="circle" src="${imgLink5}">
+                    <p id="write">${el}</p>
+                </div>`;
+            var doc1 = document.getElementById("two");
+            doc1.innerHTML += item;
             // Create a temporary container element
         });
 
@@ -99,7 +117,6 @@ function addTabContent(tabName) {
     if (tabContent) {
         tabContent.parentNode.removeChild(tabContent);
     }
-
 
     const imgLink2 = chrome.runtime.getURL("minus.svg");
     const imgLink3 = chrome.runtime.getURL("plus.svg");
@@ -124,7 +141,6 @@ function addTabContent(tabName) {
             <div class="text_overlay">3/10</div>
         </div>
         <p class="bold">So, is it worth it?</p>
-        <p>No. This product might not worth it due to its high price tag relative to its perceived performance, alongside the subpar sustainability impact of its parent company. I recommend exploring alternative options that offer more value for money but also align with better eco practices.</p>
         <p class="bold"> What is the Worth-It Meter?</p>
         <p>The Worth-It Meter is a conclusive rating that evaluates a product's overall standing by combining the product’s star ratings and its ESG score.</p>
         <p>A higher score reflects positive star ratings and a commendable ESG score. The product not only performs well but also exhibits strong environmental, social, and governance practices, contributing to a more conscientious and worthwhile purchase.</p>`;

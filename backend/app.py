@@ -7,22 +7,21 @@ import yesg
 import pandas
 import time
 import json
+import os 
 
 app = Flask(__name__)
 CORS(app)
-#CORS(app, resources={r"/*": {"origins": "*"}})
-#cors = CORS(app, resources={r"/*": {"origins": "http://localhost:port"}})
-
 
 client1 = OpenAI( 
-    #api_key = os.environ['OPENAI_API_KEY']
-    api_key = "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"
+    api_key = os.environ['OPENAI_API_KEY']
+   
 )
+
 client2 = OpenAI( 
-    #api_key = os.environ['OPENAI_API_KEY']
-    api_key = "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"
+    api_key = os.environ['OPENAI_API_KEY']
+   
 )
-rainforest_api_key = '96255297DE974A5EBD6BE6B2459198BD'
+rainforest_api_key = os.environ['AMAZON_API_KEY']
 
 motherly_tone="You are a mother going shopping with her child. Speak in a parental tone to a child who wants to buy a product. Make sure your response is short but covers briefly all essential topics. You know that your child does not need anything."
 genz_tone="You are a blunt, brutally honest, and a bit rude Gen Z teenager shopping with their friend. Speak to your friend who wants to buy a product, that you know they do not need. Use Gen Z TikTok terminology, acronyms, and references. Use some phrases like: 'Be so for real with me right now' and 'Are you serious'. Make sure your response is short but covers briefly all essential topics."
@@ -35,12 +34,12 @@ worthit_query=" Explain why or why not this product is worth it. Make it 3 sente
 openai_score_query=" Give a rating for this product on a scale of 1 to 10 for how worth it this item is. Give only a numerical value. Make it 3 sentences."
 
 
-
 @app.route('/amazon-info', methods=['GET', 'POST'])
 def amazon_info():
     # create storage dictionary
+    # B0CP9YB3Q4
     response = {}
-    product_info = getAmazonInfo('B0CP9YB3Q4')
+    product_info = getAmazonInfo('B0B7F65Y51')
     
     response['title'] = product_info.get('product').get('title')
     response['price'] = product_info.get('product').get('buybox_winner').get('price').get('raw')
@@ -55,9 +54,10 @@ def amazon_info():
 
     # get reviews
     for star_rating in ['one_star', 'five_star']:
-        star_rating_info = getAmazonReviews('B0CP9YB3Q4', star_rating)
+        star_rating_info = getAmazonReviews('B0B7F65Y51', star_rating)
         for i in range(5):
             response['reviews'].append(star_rating_info.get('reviews')[i]['body'])
+            time.sleep(5)
     
     # # for testing matters
     # star_rating_info = getAmazonReviews('B0CP9YB3Q4', 'all_stars')
@@ -69,7 +69,7 @@ def amazon_info():
 
     createOpenAIInfo(response)
 
-    with open("sampleAmazon.json", "w") as outfile: 
+    with open("sampleAmazonS.json", "w") as outfile: 
         json.dump(response, outfile)
     # return dictionary
     return response
@@ -89,7 +89,7 @@ def neutral_query():
     time.sleep(5)
     query_results['openai_score_query'] = callOpenAI(client1, neutral_tone, openai_info + openai_score_query)
 
-    with open("sample1.json", "w") as outfile: 
+    with open("sampleS.json", "w") as outfile: 
         json.dump(query_results, outfile)
     return query_results
 
@@ -107,7 +107,7 @@ def motherly_query():
     time.sleep(5)
     query_results['openai_score_query'] = callOpenAI(client1, motherly_tone, openai_info + openai_score_query)
     
-    with open("sample2.json", "w") as outfile: 
+    with open("sampleD.json", "w") as outfile: 
         json.dump(query_results, outfile)
     return query_results
 
@@ -134,7 +134,7 @@ def getAmazonInfo(asin):
         'api_key': rainforest_api_key,
         'type': 'product',
         'amazon_domain': 'amazon.com',
-        'asin': "B0B7F65Y51",
+        'asin': asin,
         'currency': 'cad'
     }
 

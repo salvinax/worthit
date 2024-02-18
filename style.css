@@ -56,7 +56,6 @@ cssbody {
     white-space: pre-line;
 }
 
-
 .nav-bar {
     display: flex;
     flex-direction: row;
@@ -195,6 +194,10 @@ cssbody {
     flex-direction: row;
 }
 
+.circle {
+    margin-left: 10px;
+}
+
 .arg-boxes {
     border-radius: 5px;
     background-color: #DBF2D4;
@@ -204,6 +207,19 @@ cssbody {
     flex-direction: row;
     justify-content: center;
     text-wrap: wrap;
+    margin-top: 4px;
+}
+
+.arg-boxes-red {
+    border-radius: 5px;
+    background-color: #f0dddc;
+    width: 95%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-wrap: wrap;
+    margin-top: 4px;
 }
 
 /* .esg_width {
@@ -238,4 +254,8 @@ cssbody {
 #write {
     font-family: 'Roboto', sans-serif;
     font-size: 13px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+
 }
