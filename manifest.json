@@ -11,7 +11,7 @@
   "permissions": ["activeTab", "scripting"],
   "web_accessible_resources": [
     {
-      "resources": ["worthit-popup.png"],
+      "resources": ["*.png", "*.jpg"],
       "matches": ["<all_urls>"]
     }
   ],
