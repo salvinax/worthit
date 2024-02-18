@@ -1,7 +1,13 @@
-body {
-    font-family: "Roboto", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+cssbody {
+    font-family: 'Roboto', sans-serif;
 }
 
+/* p {
+    font-family: 'Roboto', sans-serif;
+} */
 
 .sidePop {
     position: fixed;
@@ -38,6 +44,7 @@ body {
     flex-direction: column;
     overflow: scroll;
     overflow-x: hidden;
+    border: 1px black;
 }
 
 
@@ -51,10 +58,9 @@ body {
 
 
 .nav-bar {
-    background-color: green;
     display: flex;
     flex-direction: row;
-    background-color: #224A2C;
+    background-color: #FFFBE4;
     /* Background color of the navigation bar */
     justify-content: space-between;
     align-items: center;
@@ -62,6 +68,23 @@ body {
     /* Adjust the padding as needed */
 }
 
+.left-svg {
+    float: left;
+    /* Keep the left SVG on the left */
+    padding: 10px;
+}
+
+.right-svgs {
+    display: flex;
+    /* Use flexbox for layout */
+    align-items: center;
+    /* Center items vertically */
+}
+
+.right-svgs img {
+    margin-left: 10px;
+    /* Adjust the margin between SVGs */
+}
 
 .product-detail {
     display: flex;
@@ -72,14 +95,30 @@ body {
     top: 50px;
 }
 
+#item-brand {
+    font-size: 16px;
+}
+
+#item-title {
+    font-size: 12px;
+    color: #7B7B7B;
+}
+
+#item-price {
+    font-size: 14px;
+}
 
 .product-info {
     width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: flex-start;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    padding-top: 20px;
+    /* Add padding to the top */
 }
 
 .product-image {
@@ -91,15 +130,6 @@ body {
     border-radius: 20px;
 }
 
-.tab-el {
-    height: 30px;
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    bottom: 0;
-}
-
 .tab-bar {
     display: flex;
     flex-direction: row;
@@ -109,8 +139,9 @@ body {
 }
 
 .p-tab {
-    color: black;
-    font-size: 15px;
+    color: #224A2C;
+    font-size: 16px;
+    font-style: bold;
 
 }
 
@@ -171,5 +202,40 @@ body {
     height: 50px;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     text-wrap: wrap;
+}
+
+/* .esg_width {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    flex-direction: column;
+} */
+
+.esg {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.text_overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 36px;
+    font-family: "Oleo Script Swash Caps", cursive;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#write {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
 }
