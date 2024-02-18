@@ -28,11 +28,11 @@ motherly_tone="You are a mother going shopping with her child. Speak in a parent
 genz_tone="You are a blunt, brutally honest, and a bit rude Gen Z teenager shopping with their friend. Speak to your friend who wants to buy a product, that you know they do not need. Use Gen Z TikTok terminology, acronyms, and references. Use some phrases like: 'Be so for real with me right now' and 'Are you serious'. Make sure your response is short but covers briefly all essential topics."
 neutral_tone="You are ChatGPT advising someone on whether or not they should buy a product. You know they do not need the product. Make sure your response is short but covers briefly all essential topics."
 
-pros_query=" Create a list of 5 pros of the product."
-cons_query=" Create a list of 5 cons of the product."
-summary_query=" Write a brief summary of the pros and cons, take into consideration the reviews, esg score of the company and also follow your personality."
-worthit_query=" Explain why or why not this product is worth it."
-openai_score_query=" Give a rating for this product on a scale of 1 to 10 for how worth it this item is. Give only a numerical value."
+pros_query=" Create a bullet list of 5 pros of the product seperated by comma. Keep the bullet points brief and easy to read, and make sure they are seperated by commas."
+cons_query=" Create a bullet list of 5 cons of the product seperated by comma. Keep the bullet points brief and easy to read, and make sure they are seperated by commas."
+summary_query=" Write a brief summary of the pros and cons, take into consideration the reviews, esg score of the company and also follow your personality. Make it 3 sentences."
+worthit_query=" Explain why or why not this product is worth it. Make it 3 sentences."
+openai_score_query=" Give a rating for this product on a scale of 1 to 10 for how worth it this item is. Give only a numerical value. Make it 3 sentences."
 
 
 

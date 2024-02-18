@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', function () {
         var name = document.getElementById('promptInput').value;
         var response = await getAmazon();
         if (name === 'motherly') {
-            response = await getOpenAI(response.openai_info);
-        } else if (name === 'teen') {
-            response = await getOpenAI(response.openai_info);
+            response = await getMotherly(response.openai_info);
+        } else if (name === 'genz') {
+            response = await getGenz(response.openai_info);
         } else {
-            response = await getOpenAI(response.openai_info);
+            response = await getNeutral(response.openai_info);
         }
         console.log(response)
     });
@@ -26,8 +26,46 @@ async function getAmazon() {
 
 }
 
-async function getOpenAI(openai_info) {
+async function getMotherly(openai_info) {
     await fetch('http://127.0.0.1:5000/motherly-query', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 'openai_info': openai_info })
+    })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('response').innerText = 'Response: ' + JSON.stringify(data);
+            console.log(data)
+            return data
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+}
+
+async function getGenz(openai_info) {
+    await fetch('http://127.0.0.1:5000/genz-query', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 'openai_info': openai_info })
+    })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('response').innerText = 'Response: ' + JSON.stringify(data);
+            console.log(data)
+            return data
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+}
+
+async function getNeutral(openai_info) {
+    await fetch('http://127.0.0.1:5000/neutral-query', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
